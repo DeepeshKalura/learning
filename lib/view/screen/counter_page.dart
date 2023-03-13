@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:learning/logic/calling_logic.dart';
+import 'package:provider/provider.dart';
+
+import '../../service/calling_provider.dart';
 
 class CounterScreen extends StatelessWidget {
-  CounterScreen({super.key});
+  const CounterScreen({super.key});
 
-  final CallingLogic _callingLogic = CallingLogic();
-
+  // final myProvider = Provider.of<ProviderService>;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,20 +19,20 @@ class CounterScreen extends StatelessWidget {
             child: Text('Counter'),
           ),
           Center(
-            child: Text(_callingLogic.counter.toString()),
+            child: Text('${context.watch<ProviderService>().counter}'),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
                 onPressed: () {
-                  _callingLogic.increment();
+                  context.read<ProviderService>().increment();
                 },
                 child: const Text('Increment'),
               ),
               ElevatedButton(
                 onPressed: () {
-                  _callingLogic.decrement();
+                  context.read<ProviderService>().decrement();
                 },
                 child: const Text('Decrement'),
               ),

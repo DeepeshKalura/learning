@@ -1,16 +1,18 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 class ProviderService with ChangeNotifier {
-  int _counter = 0;
-  int get counter => _counter;
+  int counter;
+  ProviderService({
+    this.counter = 0,
+  });
 
   void increment() {
-    _counter++;
+    counter++;
     notifyListeners();
   }
 
   void decrement() {
-    _counter--;
+    counter--;
     notifyListeners();
   }
 }
