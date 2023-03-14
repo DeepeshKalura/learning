@@ -104,8 +104,3 @@ class _ShowContentBarWidgetState extends State<ShowContentBarWidget> {
     );
   }
 }
-
-//Tell me the difference between Inkwell and GestureDetector
-//When to use Inkwell and when to use GestureDetector
-// How to select time in a wiget
-
