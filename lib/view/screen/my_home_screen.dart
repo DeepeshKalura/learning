@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widget/show_content_bar_widget.dart';
+
 class MyHomeScreen extends StatelessWidget {
   const MyHomeScreen({super.key});
 
@@ -8,10 +10,9 @@ class MyHomeScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Container(
-            height: 200,
-            color: Colors.red,
-          ),
+          ShowContentBarWidget(
+            context: context,
+          )
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -21,3 +22,4 @@ class MyHomeScreen extends StatelessWidget {
     );
   }
 }
+//How to select a Date in a from of textformfield in flutter
