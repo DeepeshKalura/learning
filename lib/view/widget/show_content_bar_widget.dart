@@ -44,61 +44,71 @@ class _ShowContentBarWidgetState extends State<ShowContentBarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 10,
-      child: Form(
-        child: Column(
-          children: [
-            Container(
-              margin: const EdgeInsets.all(8),
-              child: TextFormField(
-                controller: _taskNameTextEditingcontroller,
-                decoration: const InputDecoration(
-                  labelText: 'Task Name',
-                  border: OutlineInputBorder(),
+    return Center(
+      child: Dialog(
+        child: Card(
+          elevation: 10,
+          child: Form(
+            child: Column(
+              children: [
+                Container(
+                  margin: const EdgeInsets.all(8),
+                  child: TextFormField(
+                    controller: _taskNameTextEditingcontroller,
+                    decoration: const InputDecoration(
+                      labelText: 'Task Name',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
                 ),
-              ),
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  margin: const EdgeInsets.all(8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 14),
+                        margin: const EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.black,
+                            width: 1,
+                          ),
+                        ),
+                        child: InkWell(
+                          onTap: () async {
+                            await selectDate(widget.context);
+                          }, // We are passing context here
+                          child: Text(_date),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 14),
+                        margin: const EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.black,
+                            width: 1,
+                          ),
+                        ),
+                        child: InkWell(
+                          onTap: () async {
+                            await selectTime(widget.context);
+                          },
+                          child: Text(
+                            _time.toString(),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
             ),
-            Container(
-              margin: const EdgeInsets.all(8),
-              child: Row(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.black,
-                        width: 1,
-                      ),
-                    ),
-                    child: InkWell(
-                      onTap: () async {
-                        await selectDate(widget.context);
-                      }, // We are passing context here
-                      child: Text(_date),
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.black,
-                        width: 1,
-                      ),
-                    ),
-                    child: InkWell(
-                      onTap: () async {
-                        await selectTime(widget.context);
-                      },
-                      child: Text(
-                        _time.toString(),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
+          ),
         ),
       ),
     );

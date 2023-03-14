@@ -9,17 +9,14 @@ class MyHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: [
-          ShowContentBarWidget(
-            context: context,
-          )
-        ],
+        children: const [],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          ShowContentBarWidget(context: context);
+        },
         child: const Icon(Icons.add),
       ),
     );
   }
-//TODO: Now my task here to make this application more beautiful
 }
