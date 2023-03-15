@@ -29,7 +29,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
-  final double value = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -43,29 +42,35 @@ class MyHomePage extends StatelessWidget {
           const Center(
             child: Text('Hello World'),
           ),
-          Slider(
-            min: 0.0,
-            max: 1.0,
-            value: value,
-            onChanged: (val) {},
+          Consumer(
+            builder: (context, SliderLogic sliderLogic, child) => Slider(
+              min: 0.0,
+              max: 1.0,
+              value: sliderLogic.value,
+              onChanged: (val) {
+                sliderLogic.setValue(val);
+              },
+            ),
           ),
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                  height: 100,
-                  color: Colors.red,
-                  child: const Text('Container 1'),
+          Consumer(
+            builder: (context, SliderLogic sliderLogic, child) => Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    height: 100,
+                    color: Colors.red.withOpacity(sliderLogic.value),
+                    child: const Text('Container 1'),
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Container(
-                  height: 100,
-                  color: Colors.green,
-                  child: const Text('Container 2'),
+                Expanded(
+                  child: Container(
+                    height: 100,
+                    color: Colors.green.withOpacity(sliderLogic.value),
+                    child: const Text('Container 2'),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
