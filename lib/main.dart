@@ -30,22 +30,34 @@ class MyHomePage extends StatelessWidget {
         title: const Text('Flutter Demo Home Page'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Center(
             child: Text('Hello World'),
           ),
-          Slider(value: value, onChanged: (val) {}),
-          Expanded(
-            child: Container(
-              color: Colors.red,
-              child: const Text('Container 1'),
-            ),
+          Slider(
+            min: 0.0,
+            max: 1.0,
+            value: value,
+            onChanged: (val) {},
           ),
-          Expanded(
-            child: Container(
-              color: Colors.green,
-              child: const Text('Container 2'),
-            ),
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  height: 100,
+                  color: Colors.red,
+                  child: const Text('Container 1'),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  height: 100,
+                  color: Colors.green,
+                  child: const Text('Container 2'),
+                ),
+              ),
+            ],
           ),
         ],
       ),
